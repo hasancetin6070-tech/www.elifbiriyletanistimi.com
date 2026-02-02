@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>HAYIR</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+        h1 {
+            font-size: 80px;
+            margin-top: 40px;
+        }
+        #countdown {
+            font-size: 40px;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HAYIR</h1>
+    <div id="countdown"></div>
+    <img src="foto.png" alt="foto">
+
+    <script>
+        const BASLANGIC_SAYISI = 333;
+        const GUN_MS = 24 * 60 * 60 * 1000;
+
+        let baslangicZamani = localStorage.getItem("baslangicZamani");
+
+        if (!baslangicZamani) {
+            baslangicZamani = Date.now();
+            localStorage.setItem("baslangicZamani", baslangicZamani);
+        }
+
+        const gecenGun = Math.floor((Date.now() - baslangicZamani) / GUN_MS);
+        const kalan = Math.max(BASLANGIC_SAYISI - gecenGun, 0);
+
+        document.getElementById("countdown").textContent = kalan;
+    </script>
+
+</body>
+</html>
